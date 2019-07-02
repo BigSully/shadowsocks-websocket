@@ -11,7 +11,7 @@ go build local.go<br/>
 SERVER=www.example.com PASSWORD=123456 ./local*<br/>
 
 # server  to be continued
-
+go build server.go<br/>
 
 # build windows x64 exe
 GOOS=windows GOARCH=amd64 go build -o local-x64.exe local.go
