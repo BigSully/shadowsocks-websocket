@@ -1,6 +1,10 @@
 
 
-#Post this project to the following issues:
+
+# Write document detailing how to run server in heroku automatically
+
+
+# Post this project to the following issues:
 https://github.com/shadowsocks/shadowsocks-go/issues/273
 
 
