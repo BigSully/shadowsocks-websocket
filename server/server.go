@@ -88,7 +88,7 @@ func handleConnection(wconn *websocket.Conn) {
 		}
 	}()
 
-	//logger.Printf("piping %s<->%s", sanitizeAddr(conn.RemoteAddr()), host)
+	logger.Printf("piping %s<->%s", sanitizeAddr(wconn.RemoteAddr()), host)
 
 	go ss.PipeWS2Net(*conn, remote) // stage-5
 	ss.PipeNet2WS(remote, *conn)
