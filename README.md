@@ -4,6 +4,9 @@
 # Write document detailing how to run server in heroku automatically
 
 
+# cross compile client to run it rasperry pi or cubieboard
+
+
 # Post this project to the following issues:
 https://github.com/shadowsocks/shadowsocks-go/issues/273
 
