@@ -5,6 +5,8 @@
 
 
 # cross compile client to run it rasperry pi or cubieboard
+# cubieboard
+env GOOS=linux GOARCH=arm GOARM=5 go build -o local-arm
 
 
 # Post this project to the following issues:
