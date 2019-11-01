@@ -9,10 +9,6 @@
 GOOS=linux GOARCH=arm GOARM=5 go build -o local-arm
 
 
-# Post this project to the following issues:
-https://github.com/shadowsocks/shadowsocks-go/issues/273
-
-
 
 # client
 go get -v github.com/GeorgeGloomy/shadowsocks-websocket<br/>
