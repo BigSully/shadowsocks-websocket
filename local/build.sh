@@ -1,0 +1,1 @@
+NAME=local make all -f ../Makefile
