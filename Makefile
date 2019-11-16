@@ -5,9 +5,10 @@ GOBUILD=CGO_ENABLED=0 go build -ldflags '-w -s'
 
 all: arm linux macos win64
 
-
+# cubietrunk plus, CPU: ARMCortex A7, arch: ARMv7-A
+# raspberry pi 3B+, CPU: ARM Cortex-A53,  arch: ARMv8-A
 arm:
-	GOARCH=arm GOARM=5 GOOS=linux $(GOBUILD) -o $(BINDIR)/$(NAME)-$@
+	GOARCH=arm GOARM=7 GOOS=linux $(GOBUILD) -o $(BINDIR)/$(NAME)-$@
 
 linux:
 	GOARCH=amd64 GOOS=linux $(GOBUILD) -o $(BINDIR)/$(NAME)-$@
