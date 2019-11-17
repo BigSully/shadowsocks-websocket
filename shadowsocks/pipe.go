@@ -13,11 +13,12 @@ func PipeNet2WS(src net.Conn, dst Conn) {
 		n, err := src.Read(buf)
 		if n > 0 {
 			if _, err := dst.Write(buf[0:n]); err != nil {
-				log.Println("write:", err)
+				log.Println("PipeNet2WS write:", err)
 				break
 			}
 		}
 		if err != nil {
+			log.Println("PipeWS2Net Read:", err)
 			break
 		}
 	}
@@ -30,11 +31,12 @@ func PipeWS2Net(src Conn, dst net.Conn) {
 		buf, n, err := src.ReadAll()
 		if n > 0 {
 			if _, err := dst.Write(buf); err != nil {
-				log.Println("write:", err)
+				log.Println("PipeWS2Net write:", err)
 				break
 			}
 		}
 		if err != nil {
+			log.Println("PipeWS2Net ReadAll:", err)
 			break
 		}
 	}

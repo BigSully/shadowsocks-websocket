@@ -123,7 +123,7 @@ func HandShake(conn net.Conn) (err error) {
 	conn.SetReadDeadline(time.Now().Add(time.Duration(30) * time.Second)) // timeout in 30 seconds
 	// make sure we get the nmethod field
 	if n, err = io.ReadAtLeast(conn, buf, idNmethod+1); err != nil {
-		return
+		return errors.New("get nmethod failed")
 	}
 	if buf[idVer] != socksVer5 {
 		return errors.New("socks version not supported")
@@ -134,7 +134,7 @@ func HandShake(conn net.Conn) (err error) {
 		// do nothing, jump directly to send confirmation
 	} else if n < msgLen { // has more methods to read, rare case
 		if _, err = io.ReadFull(conn, buf[n:msgLen]); err != nil {
-			return
+			return errors.New("readfull failed")
 		}
 	} else { // error, should not get extra data
 		return errors.New("socks authentication get extra data")
