@@ -18,7 +18,7 @@ func PipeNet2WS(src net.Conn, dst Conn) {
 			}
 		}
 		if err != nil {
-			log.Println("PipeWS2Net Read:", err)
+			log.Println("PipeNet2WS Read:", err)
 			break
 		}
 	}
