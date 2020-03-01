@@ -1,7 +1,10 @@
-
-
-
 # Write document detailing how to run server in heroku automatically
+
+
+# build
+make local
+make server
+TARGET=all make local server
 
 
 

@@ -1,6 +1,7 @@
 NAME ?= shadowsocks-ws
-BINDIR=bin
+BINDIR ?= ./bin
 GOBUILD=CGO_ENABLED=0 go build -ldflags '-w -s'
+TARGET ?= macos
 # The -w and -s flags reduce binary sizes by excluding unnecessary symbols and debug info
 
 .PHONY: all
@@ -25,12 +26,26 @@ win64:
 	GOARCH=amd64 GOOS=windows $(GOBUILD) -o $(BINDIR)/$(NAME)-$@.exe
 
 .PHONY: releases
-releases: clean linux macos win64
+releases: clean all
 	chmod +x $(BINDIR)/$(NAME)-*
-	gzip $(BINDIR)/$(NAME)-linux
-	gzip $(BINDIR)/$(NAME)-macos
+	gzip $(BINDIR)/$(NAME)-*
 	zip -m -j $(BINDIR)/$(NAME)-win64.zip $(BINDIR)/$(NAME)-win64.exe
 
 .PHONY: clean
 clean:
 	rm $(BINDIR)/*
+
+.PHONY: local
+local:
+	NAME=ss-local BINDIR=$(CURDIR)/bin $(MAKE) -C local $(TARGET) -f $(CURDIR)/Makefile
+
+.PHONY: server
+server:
+	NAME=ss-server BINDIR=$(CURDIR)/bin $(MAKE) -C server $(TARGET) -f $(CURDIR)/Makefile
+
+
+
+
+
+
+

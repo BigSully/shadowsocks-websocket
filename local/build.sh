@@ -1,1 +1,0 @@
-NAME=ss-local make all -f ../Makefile

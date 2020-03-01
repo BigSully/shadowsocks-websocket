@@ -1,1 +1,0 @@
-NAME=ss-server make all -f ../Makefile
