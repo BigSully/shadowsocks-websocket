@@ -33,7 +33,8 @@ func handleConnection(conn net.Conn) {
 		return
 	}
 
-	wsAddr := fmt.Sprintf("ws://%v:%v/", config["server"], config["server_port"])
+	//wsAddr := fmt.Sprintf("ws://%v:%v/", config["server"], config["server_port"])
+	wsAddr := config["server"].(string)
 	method := config["method"].(string)
 	password := config["password"].(string)
 	cipher, err := ss.NewCipher(method, password)
@@ -43,7 +44,6 @@ func handleConnection(conn net.Conn) {
 		logger.Println("error dialing websocket:", err)
 		return
 	}
-
 
 	newConn := ss.NewConn(wsConn, cipher)
 	if err != nil {
